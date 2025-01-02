@@ -10,6 +10,7 @@ import {
     CaretBottom
 } from '@element-plus/icons-vue'
 import avatar from '@/assets/default.png'
+
 </script>
 
 <template>
@@ -19,13 +20,13 @@ import avatar from '@/assets/default.png'
             <div class="el-aside__logo"></div>
             <el-menu active-text-color="#ffd04b" background-color="#232323"  text-color="#fff"
                 router>
-                <el-menu-item >
+                <el-menu-item index="/article/category">
                     <el-icon>
                         <Management />
                     </el-icon>
                     <span>文章分类</span>
-                </el-menu-item>
-                <el-menu-item >
+                </el-menu-item >
+                <el-menu-item index="/article/manage">
                     <el-icon>
                         <Promotion />
                     </el-icon>
@@ -38,19 +39,19 @@ import avatar from '@/assets/default.png'
                         </el-icon>
                         <span>个人中心</span>
                     </template>
-                    <el-menu-item >
+                    <el-menu-item index="/user/info">
                         <el-icon>
                             <User />
                         </el-icon>
                         <span>基本资料</span>
                     </el-menu-item>
-                    <el-menu-item >
+                    <el-menu-item index="/user/avatar">
                         <el-icon>
                             <Crop />
                         </el-icon>
                         <span>更换头像</span>
                     </el-menu-item>
-                    <el-menu-item >
+                    <el-menu-item index="/user/resetPassword">
                         <el-icon>
                             <EditPen />
                         </el-icon>
@@ -63,7 +64,7 @@ import avatar from '@/assets/default.png'
         <el-container>
             <!-- 头部区域 -->
             <el-header>
-                <div>黑马程序员：<strong>东哥</strong></div>
+                <div>程序员：<strong>东哥</strong></div>
                 <el-dropdown placement="bottom-end">
                     <span class="el-dropdown__box">
                         <el-avatar :src="avatar" />
@@ -84,11 +85,11 @@ import avatar from '@/assets/default.png'
             <!-- 中间区域 -->
             <el-main>
                 <div style="width: 1290px; height: 570px;border: 1px solid red;">
-                    内容展示区
+                    <router-view></router-view>
                 </div>
             </el-main>
             <!-- 底部区域 -->
-            <el-footer>大事件 ©2023 Created by 黑马程序员</el-footer>
+            <el-footer>大事件 ©2025 Created by ForgottenLegend</el-footer>
         </el-container>
     </el-container>
 </template>

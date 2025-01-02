@@ -1,6 +1,7 @@
 <script setup>
 import { User, Lock } from '@element-plus/icons-vue'
 import { ref } from 'vue'
+import { ElMessage } from 'element-plus'
 //控制注册与登录表单的显示， 默认显示注册
 const isRegister = ref(false)
 //定义数据模型
@@ -36,24 +37,37 @@ const rules = ref({
     ]
 })
 
-import {userRegisterService,userLoginService} from '@/api/user.js'
+import { userRegisterService, userLoginService } from '@/api/user.js'
 
-const register = async() => {
-    let result=await userRegisterService(registerData.value)
-    if(result.code === 0) {
-        alert(result.message ? result.message : "注册成功")
-    }else {
-        alert(result.message ? result.message : "注册失败")
-    }
+const register = async () => {
+    let result = await userRegisterService(registerData.value)
+    // if(result.code === 0) {
+    //     alert(result.message ? result.message : "注册成功")
+    // }else {
+    //     alert(result.message ? result.message : "注册失败")
+    // }
+    ElMessage({
+        message: result.message ? result.message : "注册成功",
+        type: 'success',
+    })
+    //alert(result.message ? result.message : "注册成功")
 }
 //复用注册表单数据
-const login=async()=>{
-    let result=await userLoginService(loginData.value)
-    if(result.code === 0) {
-        alert("登录成功")
-    }else {
-        alert(result.message ? result.message : "登录失败")
-    }
+import {useRouter} from 'vue-router'
+const router=useRouter()
+const login = async () => {
+    let result = await userLoginService(loginData.value)
+    // if(result.code === 0) {
+    //     alert("登录成功")
+    // }else {
+    //     alert(result.message ? result.message : "登录失败")
+    // }
+    //alert("登录成功")
+    ElMessage({
+        message: "登录成功",
+        type: 'success',
+    })
+    router.push('/')
 }
 </script>
 
@@ -99,7 +113,8 @@ const login=async()=>{
                     <el-input :prefix-icon="User" placeholder="请输入用户名" v-model="loginData.username"></el-input>
                 </el-form-item>
                 <el-form-item prop="password">
-                    <el-input name="password" :prefix-icon="Lock" type="password" placeholder="请输入密码" v-model="loginData.password"></el-input>
+                    <el-input name="password" :prefix-icon="Lock" type="password" placeholder="请输入密码"
+                        v-model="loginData.password"></el-input>
                 </el-form-item>
                 <el-form-item class="flex">
                     <div class="flex">
