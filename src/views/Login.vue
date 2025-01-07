@@ -53,8 +53,10 @@ const register = async () => {
     //alert(result.message ? result.message : "注册成功")
 }
 //复用注册表单数据
+import { userTokenStore } from "@/stores/token";
 import {useRouter} from 'vue-router'
 const router=useRouter()
+const tokenStore=userTokenStore()
 const login = async () => {
     let result = await userLoginService(loginData.value)
     // if(result.code === 0) {
@@ -67,6 +69,7 @@ const login = async () => {
         message: "登录成功",
         type: 'success',
     })
+    tokenStore.setToken(result.data)
     router.push('/')
 }
 </script>
