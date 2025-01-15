@@ -61,7 +61,7 @@ const updateCategory = async () => {
 }
 const deleteCategory = async (row) => {
     ElMessageBox.confirm(
-        '改分类将会被删除，确定吗?',
+        '该分类将会被删除，确定吗?',
         '删除分类',
         {
             confirmButtonText: '确定',
