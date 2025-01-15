@@ -15,3 +15,17 @@ export const userLoginService=(loginData)=>{
     }
     return request.post('/user/login',params)
 }
+
+export const userInfoService=()=>{
+    return request.get('/user/userInfo')
+}
+
+export const updateUserInfoService=(userInfoData)=>{
+    return request.put('/user/update',userInfoData)
+}
+
+export const updateUserAvService=(url)=>{
+    const params=new URLSearchParams()
+    params.append('avatarUrl',url)
+    return request.patch('/user/updateAvatar',params)
+}
